@@ -25,11 +25,7 @@ export default function Pricewatcher() {
                   </a>
                 </li>
                 <li className="nav-item py-2  ">
-                  <a
-                    aria-current="page"
-                    className="nav-link"
-                    href="/"
-                  >
+                  <a aria-current="page" className="nav-link" href="/">
                     <span className="nav-link-title">🙋🏽‍♂ Buyer Connect</span>
                   </a>
                 </li>
@@ -62,8 +58,6 @@ export default function Pricewatcher() {
       <div>
         <Tabletable data={Datadata} />
       </div>
-
-
     </>
   );
 }

@@ -26,7 +26,9 @@ export default function HomeNavbar() {
                     </li>
                     <li className="nav-item py-2  ">
                       <a aria-current="page" className="nav-link" href="/">
-                        <span className="nav-link-title">🙋🏽‍♂ Buyer Connect</span>
+                        <span className="nav-link-title">
+                          🙋🏽‍♂ Buyer Connect
+                        </span>
                       </a>
                     </li>
                     <li className="nav-item py-2  ">

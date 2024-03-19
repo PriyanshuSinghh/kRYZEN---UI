@@ -1,12 +1,8 @@
-import React from 'react'
+import React from "react";
 
 export default function Header() {
   return (
     <div>
-      
-
-
-
       <header className="navbar navbar-expand-md navbar-light">
         <div className="container-xl">
           <a
@@ -78,5 +74,5 @@ export default function Header() {
         </div>
       </header>
     </div>
-  )
+  );
 }
