@@ -236,6 +236,7 @@ const data = [
     trend: ""
   }
 ];
+// Define the number of items per page
 const ITEMS_PER_PAGE = 10;
 
 app.get('/api/data', (req, res) => {
