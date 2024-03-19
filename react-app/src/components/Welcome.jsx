@@ -1,5 +1,5 @@
 import React from "react";
-
+import './home';
 export default function Welcome() {
   return (
    
