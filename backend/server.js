@@ -1,293 +1,248 @@
-const express = require('express');
-const cors = require('cors'); // Import cors middleware
+const express = require("express");
+const cors = require("cors");
+
 const app = express();
-const port = 5000; // Choose any port you like
+const PORT = 4000; // You can change the port number if needed
 
-// Use cors middleware
 app.use(cors());
+app.use(express.json());
 
-// Define your data
+// Data
 const data = [
   {
-    id: 1,
-    productName: "Italian Basil",
-    imageSrc: "",
-    productLink: "commodities-1",
-    wholesalePrice: "₹33.80",
-    retailPrice: "₹52.00",
-    weeksHigh: "₹59.00",
-    weeksLow: "₹47.00",
-    trend: ""
+    productname: "Italian Basil",
+    wholesaleprice: "₹33.80",
+    retailprice: "₹52.00",
+    weekshigh: "₹59.00",
+    weekslow: "₹47.00",
+    trend: "",
+    href: "/",
   },
   {
-    id: 2,
-    productName: "Swiss Chard",
-    wholesalePrice: "₹31.20",
-    retailPrice: "₹48.00",
-    weeksHigh: "₹59.00",
-    weeksLow: "₹48.00",
-    trend: ""
+    productname: "Swiss Chard",
+    wholesaleprice: "₹31.20",
+    retailprice: "₹48.00",
+    weekshigh: "₹59.00",
+    weekslow: "₹48.00",
+    trend: "",
+    href: "/",
   },
   {
-    id: 3,
-    productName: "Broccoli",
-    wholesalePrice: "₹29.90",
-    retailPrice: "₹46.00",
-    weeksHigh: "₹59.00",
-    weeksLow: "₹46.00",
-    trend: ""
-  },
-  {
-    id: 4,
-    productName: "Kale",
-    wholesalePrice: "₹33.15",
-    retailPrice: "₹51.00",
-    weeksHigh: "₹57.00",
-    weeksLow: "₹46.00",
-    trend: ""
-  },
-  {
-    id: 5,
-    productName: "Celery",
-    wholesalePrice: "₹29.90",
-    retailPrice: "₹46.00",
-    weeksHigh: "₹57.00",
-    weeksLow: "₹46.00",
-    trend: ""
-  },
-  {
-    id: 6,
-    productName: "Rosemary",
-    wholesalePrice: "₹37.05",
-    retailPrice: "₹57.00",
-    weeksHigh: "₹57.00",
-    weeksLow: "₹52.00",
-    trend: ""
-  },
-  {
-    id: 7,
-    productName: "Pak Choi",
-    wholesalePrice: "₹37.70",
-    retailPrice: "₹58.00",
-    weeksHigh: "₹58.00",
-    weeksLow: "₹51.00",
-    trend: ""
-  },
-  {
-    id: 8,
-    productName: "Asparagus",
-    wholesalePrice: "₹179.40",
-    retailPrice: "₹276.00",
-    weeksHigh: "₹285.00",
-    weeksLow: "₹276.00",
-    trend: ""
-  },
-  {
-    id: 9,
-    productName: "Thyme",
-    wholesalePrice: "₹76.05",
-    retailPrice: "₹117.00",
-    weeksHigh: "₹129.00",
-    weeksLow: "₹117.00",
-    trend: ""
-  },
-  {
-    id: 10,
-    productName: "Broccoli Florets",
-    wholesalePrice: "₹120.25",
-    retailPrice: "₹185.00",
-    weeksHigh: "₹190.00",
-    weeksLow: "₹180.00",
-    trend: ""
-  },
-  {
-    id: 11,
-    productName: "Lollo Rossa",
-    wholesalePrice: "₹36.40",
-    retailPrice: "₹56.00",
-    weeksHigh: "₹72.00",
-    weeksLow: "₹49.00",
-    trend: ""
-  },
-  {
-    id: 12,
-    productName: "Red Oak Lettuce",
-    wholesalePrice: "₹35.10",
-    retailPrice: "₹54.00",
-    weeksHigh: "₹56.00",
-    weeksLow: "₹46.00",
-    trend: ""
-  },
-  {
-    id: 13,
-    productName: "Green Butterhead Lettuce",
-    wholesalePrice: "₹35.75",
-    retailPrice: "₹55.00",
-    weeksHigh: "₹55.00",
-    weeksLow: "₹47.00",
-    trend: ""
-  },
-  {
-    id: 14,
-    productName: "Romaine Lettuce",
-    wholesalePrice: "₹34.45",
-    retailPrice: "₹53.00",
-    weeksHigh: "₹53.00",
-    weeksLow: "₹46.00",
-    trend: ""
-  },
-  {
-    id: 15,
-    productName: "Tulsi",
-    wholesalePrice: "₹52.00",
-    retailPrice: "₹80.00",
-    weeksHigh: "₹80.00",
-    weeksLow: "₹63.00",
-    trend: ""
-  },
-  {
-    id: 16,
-    productName: "Leeks",
-    wholesalePrice: "₹51.35",
-    retailPrice: "₹79.00",
-    weeksHigh: "₹97.00",
-    weeksLow: "₹79.00",
-    trend: ""
-  },
-  {
-    id: 17,
-    productName: "Mint",
-    wholesalePrice: "₹21.45",
-    retailPrice: "₹33.00",
-    weeksHigh: "₹38.00",
-    weeksLow: "₹31.00",
-    trend: ""
-  },
-  {
-    id: 18,
-    productName: "Amaranthus",
-    wholesalePrice: "₹23.40",
-    retailPrice: "₹36.00",
-    weeksHigh: "₹39.00",
-    weeksLow: "₹32.00",
-    trend: ""
-  },
-  {
-    id: 19,
-    productName: "Palak",
-    wholesalePrice: "₹44.85",
-    retailPrice: "₹69.00",
-    weeksHigh: "₹70.00",
-    weeksLow: "₹60.00",
-    trend: ""
-  },
-  {
-    id: 20,
-    productName: "Amaranthus green",
-    wholesalePrice: "₹51.35",
-    retailPrice: "₹79.00",
-    weeksHigh: "₹79.00",
-    weeksLow: "₹61.00",
-    trend: ""
-  },
-  {
-    id: 21,
-    productName: "Colocasia Leaf",
-    wholesalePrice: "₹71.50",
-    retailPrice: "₹110.00",
-    weeksHigh: "₹123.00",
-    weeksLow: "₹106.00",
-    trend: ""
-  },
-  {
-    id: 22,
-    productName: "Methi",
-    wholesalePrice: "₹40.95",
-    retailPrice: "₹63.00",
-    weeksHigh: "₹83.00",
-    weeksLow: "₹63.00",
-    trend: ""
-  },
-  {
-    id: 23,
-    productName: "Drumstick",
-    wholesalePrice: "₹48.10",
-    retailPrice: "₹74.00",
-    weeksHigh: "₹78.00",
-    weeksLow: "₹63.00",
-    trend: ""
-  },
-  {
-    id: 24,
-    productName: "Green Coral",
-    wholesalePrice: "₹56.55",
-    retailPrice: "₹87.00",
-    weeksHigh: "₹91.00",
-    weeksLow: "₹72.00",
-    trend: ""
-  },
-  {
-    id: 25,
-    productName: "Simpson Lettuce",
-    wholesalePrice: "₹53.95",
-    retailPrice: "₹83.00",
-    weeksHigh: "₹109.00",
-    weeksLow: "₹83.00",
-    trend: ""
-  },
-  {
-    id: 26,
-    productName: "Green Lettuce",
-    wholesalePrice: "₹51.35",
-    retailPrice: "₹79.00",
-    weeksHigh: "₹79.00",
-    weeksLow: "₹64.00",
-    trend: ""
-  },
-  {
-    id: 27,
-    productName: "Green chilli",
-    wholesalePrice: "₹39.65",
-    retailPrice: "₹61.00",
-    weeksHigh: "₹75.00",
-    weeksLow: "₹61.00",
-    trend: ""
-  },
-  {
-    id: 28,
-    productName: "Chilli Picador",
-    wholesalePrice: "₹44.20",
-    retailPrice: "₹68.00",
-    weeksHigh: "₹82.00",
-    weeksLow: "₹66.00",
-    trend: ""
-  },
-  {
-    id: 29,
-    productName: "Flot Parsley",
-    wholesalePrice: "₹46.15",
-    retailPrice: "₹71.00",
-    weeksHigh: "₹73.00",
-    weeksLow: "₹67.00",
-    trend: ""
+    productname: "Broccoli",
+    wholesaleprice: "₹29.90",
+    retailprice: "₹46.00",
+    weekshigh: "₹59.00",
+    weekslow: "₹46.00",
+    trend: "",
+    href: "/broccoli",
   },
 
+  {
+    productname: "Kale",
+    wholesaleprice: "₹31.20",
+    retailprice: "₹48.00",
+    weekshigh: "₹59.00",
+    weekslow: "₹48.00",
+    trend: "",
+    href: "/",
+  },
+  {
+    productname: "Celery",
+    wholesaleprice: "₹31.20",
+    retailprice: "₹48.00",
+    weekshigh: "₹59.00",
+    weekslow: "₹48.00",
+    trend: "",
+    href: "/",
+  },
+  // Add more data here
 ];
-const ITEMS_PER_PAGE = 13;
 
-app.get('/api/data', (req, res) => {
-  const page = parseInt(req.query.page) || 1; 
-  const startIndex = (page - 1) * ITEMS_PER_PAGE; 
-  const endIndex = startIndex + ITEMS_PER_PAGE; 
-  const totalItems = data.length; 
+const broccolidata = [
+  {
+    data: "7 Mar 2024",
+    retailprice: "₹46.00",
+    wholesaleprice: "₹29.00 - ₹31.00",
+    priceatfarm: "₹30.00 - ₹28.00",
+  },
+  {
+    data: "6 Mar 2024",
+    retailprice: "₹49.00",
+    wholesaleprice: "₹31.00 - ₹33.00",
+    priceatfarm: "₹32.00 - ₹29.00",
+  },
+  {
+    data: "5 Mar 2024",
+    retailprice: "₹46.00",
+    wholesaleprice: "₹29.00 - ₹31.00",
+    priceatfarm: "₹30.00 - ₹28.00",
+  },
+  {
+    data: "4 Mar 2024",
+    retailprice: "₹55.00",
+    wholesaleprice: "₹35.00 - ₹37.00",
+    priceatfarm: "₹36.00 - ₹33.00",
+  },
+  {
+    data: "3 Mar 2024",
+    retailprice: "₹54.00",
+    wholesaleprice: "₹34.00 - ₹37.00",
+    priceatfarm: "₹35.00 - ₹32.00",
+  },
+  {
+    data: "2 Mar 2024",
+    retailprice: "₹59.00",
+    wholesaleprice: "₹37.00 - ₹40.00",
+    priceatfarm: "₹38.00 - ₹35.00",
+  },
+  {
+    data: "1 Mar 2024",
+    retailprice: "₹55.00",
+    wholesaleprice: "₹35.00 - ₹37.00",
+    priceatfarm: "₹36.00 - ₹33.00",
+  },
+  {
+    data: "29 Feb 2024",
+    retailprice: "₹57.00",
+    wholesaleprice: "₹36.00 - ₹39.00",
+    priceatfarm: "₹37.00 - ₹34.00",
+  },
+  {
+    data: "28 Feb 2024",
+    retailprice: "₹53.00",
+    wholesaleprice: "₹33.00 - ₹36.00",
+    priceatfarm: "₹34.00 - ₹32.00",
+  },
+  {
+    data: "27 Feb 2024",
+    retailprice: "₹52.00",
+    wholesaleprice: "₹33.00 - ₹35.00",
+    priceatfarm: "₹34.00 - ₹31.00",
+  },
+  {
+    data: "26 Feb 2024",
+    retailprice: "₹51.00",
+    wholesaleprice: "₹32.00 - ₹35.00",
+    priceatfarm: "₹33.00 - ₹31.00",
+  },
+  {
+    data: "25 Feb 2024",
+    retailprice: "₹50.00",
+    wholesaleprice: "₹32.00 - ₹34.00",
+    priceatfarm: "₹33.00 - ₹30.00",
+  },
+  {
+    data: "24 Feb 2024",
+    retailprice: "₹47.00",
+    wholesaleprice: "₹30.00 - ₹32.00",
+    priceatfarm: "₹31.00 - ₹28.00",
+  },
+  {
+    data: "23 Feb 2024",
+    retailprice: "₹52.00",
+    wholesaleprice: "₹33.00 - ₹35.00",
+    priceatfarm: "₹34.00 - ₹31.00",
+  },
+  {
+    data: "22 Feb 2024",
+    retailprice: "₹56.00",
+    wholesaleprice: "₹35.00 - ₹38.00",
+    priceatfarm: "₹36.00 - ₹34.00",
+  },
+  {
+    data: "21 Feb 2024",
+    retailprice: "₹49.00",
+    wholesaleprice: "₹31.00 - ₹33.00",
+    priceatfarm: "₹32.00 - ₹29.00",
+  },
+  {
+    data: "20 Feb 2024",
+    retailprice: "₹46.00",
+    wholesaleprice: "₹29.00 - ₹31.00",
+    priceatfarm: "₹30.00 - ₹28.00",
+  },
+  {
+    data: "19 Feb 2024",
+    retailprice: "₹53.00",
+    wholesaleprice: "₹33.00 - ₹36.00",
+    priceatfarm: "₹34.00 - ₹32.00",
+  },
+  {
+    data: "18 Feb 2024",
+    retailprice: "₹53.00",
+    wholesaleprice: "₹33.00 - ₹36.00",
+    priceatfarm: "₹34.00 - ₹32.00",
+  },
+  {
+    data: "17 Feb 2024",
+    retailprice: "₹53.00",
+    wholesaleprice: "₹33.00 - ₹36.00",
+    priceatfarm: "₹34.00 - ₹32.00",
+  },
+  {
+    data: "16 Feb 2024",
+    retailprice: "₹53.00",
+    wholesaleprice: "₹33.00 - ₹36.00",
+    priceatfarm: "₹34.00 - ₹32.00",
+  },
+  {
+    data: "15 Feb 2024",
+    retailprice: "₹54.00",
+    wholesaleprice: "₹34.00 - ₹37.00",
+    priceatfarm: "₹35.00 - ₹32.00",
+  },
+  {
+    data: "14 Feb 2024",
+    retailprice: "₹54.00",
+    wholesaleprice: "₹34.00 - ₹37.00",
+    priceatfarm: "₹35.00 - ₹32.00",
+  },
+  {
+    data: "13 Feb 2024",
+    retailprice: "₹46.00",
+    wholesaleprice: "₹29.00 - ₹31.00",
+    priceatfarm: "₹30.00 - ₹28.00",
+  },
+  {
+    data: "12 Feb 2024",
+    retailprice: "₹46.00",
+    wholesaleprice: "₹29.00 - ₹31.00",
+    priceatfarm: "₹30.00 - ₹28.00",
+  },
+  {
+    data: "11 Feb 2024",
+    retailprice: "₹48.00",
+    wholesaleprice: "₹30.00 - ₹33.00",
+    priceatfarm: "₹31.00 - ₹29.00",
+  },
+  {
+    data: "10 Feb 2024",
+    retailprice: "₹47.00",
+    wholesaleprice: "₹30.00 - ₹32.00",
+    priceatfarm: "₹31.00 - ₹28.00",
+  },
+];
 
+// Endpoint for fetching paginated data
+app.get("/api/data", (req, res) => {
+  // Pagination parameters
+  const page = parseInt(req.query.page) || 1; // Default to page 1 if not specified
+  const elementsPerPage = 10;
+  const startIndex = (page - 1) * elementsPerPage;
+  const endIndex = startIndex + elementsPerPage;
+
+  // Extract the subset of data for the requested page
   const paginatedData = data.slice(startIndex, endIndex);
 
-  const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
-
-  res.json({ data: paginatedData, totalPages });
+  // Respond with the paginated data
+  res.json(paginatedData);
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+app.get("/api/broccolidata", (req, res) => {
+  res.json(broccolidata);
+});
+
+// Start the server
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
