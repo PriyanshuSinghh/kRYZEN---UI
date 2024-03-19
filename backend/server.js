@@ -236,23 +236,18 @@ const data = [
     trend: ""
   }
 ];
-// Define the number of items per page
 const ITEMS_PER_PAGE = 10;
 
-// Define a route to fetch paginated data
 app.get('/api/data', (req, res) => {
-  const page = parseInt(req.query.page) || 1; // Get the requested page number from query parameters
-  const startIndex = (page - 1) * ITEMS_PER_PAGE; // Calculate the start index of items for the requested page
-  const endIndex = startIndex + ITEMS_PER_PAGE; // Calculate the end index of items for the requested page
-  const totalItems = data.length; // Total number of items
+  const page = parseInt(req.query.page) || 1; 
+  const startIndex = (page - 1) * ITEMS_PER_PAGE; 
+  const endIndex = startIndex + ITEMS_PER_PAGE; 
+  const totalItems = data.length; 
 
-  // Slice the data array to get the items for the requested page
   const paginatedData = data.slice(startIndex, endIndex);
 
-  // Calculate the total number of pages
   const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
 
-  // Send the paginated data along with the total number of pages as JSON response
   res.json({ data: paginatedData, totalPages });
 });
 
