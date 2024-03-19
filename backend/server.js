@@ -234,9 +234,46 @@ const data = [
     weeksHigh: "₹109.00",
     weeksLow: "₹83.00",
     trend: ""
-  }
+  },
+  {
+    id: 26,
+    productName: "Green Lettuce",
+    wholesalePrice: "₹51.35",
+    retailPrice: "₹79.00",
+    weeksHigh: "₹79.00",
+    weeksLow: "₹64.00",
+    trend: ""
+  },
+  {
+    id: 27,
+    productName: "Green chilli",
+    wholesalePrice: "₹39.65",
+    retailPrice: "₹61.00",
+    weeksHigh: "₹75.00",
+    weeksLow: "₹61.00",
+    trend: ""
+  },
+  {
+    id: 28,
+    productName: "Chilli Picador",
+    wholesalePrice: "₹44.20",
+    retailPrice: "₹68.00",
+    weeksHigh: "₹82.00",
+    weeksLow: "₹66.00",
+    trend: ""
+  },
+  {
+    id: 29,
+    productName: "Flot Parsley",
+    wholesalePrice: "₹46.15",
+    retailPrice: "₹71.00",
+    weeksHigh: "₹73.00",
+    weeksLow: "₹67.00",
+    trend: ""
+  },
+
 ];
-const ITEMS_PER_PAGE = 10;
+const ITEMS_PER_PAGE = 13;
 
 app.get('/api/data', (req, res) => {
   const page = parseInt(req.query.page) || 1; 
