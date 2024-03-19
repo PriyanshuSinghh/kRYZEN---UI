@@ -236,7 +236,6 @@ const data = [
     trend: ""
   }
 ];
-// Define the number of items per page
 const ITEMS_PER_PAGE = 10;
 
 app.get('/api/data', (req, res) => {
@@ -252,7 +251,6 @@ app.get('/api/data', (req, res) => {
   res.json({ data: paginatedData, totalPages });
 });
 
-// Start the server
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
