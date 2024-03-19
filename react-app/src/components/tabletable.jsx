@@ -2,7 +2,7 @@ import React from "react";
 import Datadata from "../Data/datadata";
 import Tabletable from "./tabletable";
 
-export default function Pricewatcher() {
+export default function Table() {
   return (
     <>
       <div className="navbar-expand-md navbar-top-header">

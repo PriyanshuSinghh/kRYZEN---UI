@@ -1,21 +1,19 @@
 import "./App.css"
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Home from "./components/home";
-import NavigationBar from './components/NavigationBar'
-import PriceWatcher from "./components/Pricewatcher";
-import Pricewatcher2 from "./components/Pricewatcher2";
-
-
+import Header from "./components/header";
+import HomeNavbar from './components/homenavbar'
+import Pricewatcher from "./components/pricewatcher";
+import Table from "./components/tabletable";
 function App() {
   return (
     <>
       <Routes>
 
-        <Route path="/home" element={<Home />} />
-        <Route path="/NavigationBar" element={<NavigationBar />} />
-        <Route path="/Pricewatcher" element={<PriceWatcher />} />
-        <Route path="/Pricewatcher2" element={<Pricewatcher2 />} />
+        <Route path="/header" element={<Header />} />
+        <Route path="/homeNavbar" element={<HomeNavbar />} />
+        <Route path="/pricewatcher" element={<Pricewatcher />} />
+        <Route path="/table" element={<Table/>}  />
       </Routes>
 
 
