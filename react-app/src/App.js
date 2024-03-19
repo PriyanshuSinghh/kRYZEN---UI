@@ -1,7 +1,7 @@
+import "./App.css"
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Home from './home';
-import NavigationBar from './NavigationBar';
+import Home from "./components/home";
 
 
 
@@ -11,10 +11,7 @@ const App = () => {
     <>
     <Routes>
       
-      <Route path='/home' element={<Home/>}/>
-      
-      <Route path='/NavigationBar' element={<NavigationBar/>}/>
-
+<Route path="/home" element = {<Home />} />
       
     </Routes>
       
