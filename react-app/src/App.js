@@ -16,7 +16,6 @@ function App() {
         <Route path="/table" element={<Table/>}  />
       </Routes>
 
-
     </>
   );
 }
